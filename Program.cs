@@ -18,17 +18,23 @@ namespace Lab01_Exception_Handling_and_Debugging
             int[] newArray = new int[userInput];
 
            
-            Console.WriteLine(string.Join(", ", Populate(newArray)));
+            Console.WriteLine($"The numbers in the array are {string.Join(", ", Populate(newArray))}");
+
         }
 
         static int[] Populate(int[] intArray)
         {
-            foreach (int newIndex in intArray)
+            int j = 1;
+
+            for (int i = 0; i < intArray.Length; i++)
             {
-                Console.WriteLine($"Please enter a number: {newIndex} of {intArray}");
-                intArray[newIndex] = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Please enter a number: {j} of {intArray.Length}");
+                intArray[i] = Convert.ToInt32(Console.ReadLine());
+                j++;
             }
+            Console.WriteLine($"Your array is length {intArray.Length}");
             return intArray;
+            
         }
 
         //static int GetSum(intArray)
