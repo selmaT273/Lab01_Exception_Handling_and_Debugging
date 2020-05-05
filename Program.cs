@@ -8,6 +8,8 @@ namespace Lab01_Exception_Handling_and_Debugging
         {
             Console.WriteLine("Welcome to my game! Let's do some math!");
             StartSequence();
+
+            Console.Write("Program is complete");
         }
 
         static void StartSequence()
@@ -62,11 +64,11 @@ namespace Lab01_Exception_Handling_and_Debugging
             return product;
         }
 
-        static decimal GetQuotient(int intProduct)
+        static decimal GetQuotient(decimal intProduct)
         {
             Console.WriteLine($"Please enter a number to divide your product {intProduct} by.");
-            int divideBy = Convert.ToInt32(Console.ReadLine());
-            int quotient = intProduct / divideBy;
+            decimal divideBy = Convert.ToInt32(Console.ReadLine());
+            decimal quotient = decimal.Divide(intProduct, divideBy);
 
             Console.WriteLine($"{intProduct} / {divideBy} = {quotient}");
             return quotient;
