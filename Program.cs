@@ -6,6 +6,7 @@ namespace Lab01_Exception_Handling_and_Debugging
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to my game! Let's do some math!");
             StartSequence();
         }
 
@@ -16,27 +17,34 @@ namespace Lab01_Exception_Handling_and_Debugging
 
             int[] newArray = new int[userInput];
 
+           
+            Console.WriteLine(string.Join(", ", Populate(newArray)));
         }
 
-        static int[] Populate(intArray)
+        static int[] Populate(int[] intArray)
         {
-
+            foreach (int newIndex in intArray)
+            {
+                Console.WriteLine($"Please enter a number: {newIndex} of {intArray}");
+                intArray[newIndex] = Convert.ToInt32(Console.ReadLine());
+            }
+            return intArray;
         }
 
-        static int GetSum(intArray)
-        {
+        //static int GetSum(intArray)
+        //{
 
-        }
+        //}
 
-        static int GetProduct(intArray, intSum)
-        {
+        //static int GetProduct(intArray, intSum)
+        //{
 
-        }
+        //}
 
-        static decimal GetQuotient(intProduct)
-        {
+        //static decimal GetQuotient(intProduct)
+        //{
 
-        }
+        //}
 
     }
 }
