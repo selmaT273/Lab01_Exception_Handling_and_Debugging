@@ -20,6 +20,7 @@ namespace Lab01_Exception_Handling_and_Debugging
            
             Console.WriteLine($"The numbers in the array are {string.Join(", ", Populate(newArray))}");
             Console.WriteLine($"The sum of the array is {GetSum(newArray)}");
+            GetProduct(newArray, GetSum(newArray));
 
         }
 
@@ -33,7 +34,7 @@ namespace Lab01_Exception_Handling_and_Debugging
                 intArray[i] = Convert.ToInt32(Console.ReadLine());
                 j++;
             }
-            Console.WriteLine($"Your array is length {intArray.Length}");
+            Console.WriteLine($"Your array is size: {intArray.Length}");
             return intArray;
             
         }
@@ -50,10 +51,15 @@ namespace Lab01_Exception_Handling_and_Debugging
             return sum;
         }
 
-        //static int GetProduct(intArray, intSum)
-        //{
+        static int GetProduct(int[] intArray, int intSum)
+        {
+            Console.WriteLine($"Please select a random number between 1 and {intArray.Length}");
+            int randomNum = Convert.ToInt32(Console.ReadLine());
+            int product = intSum * randomNum;
 
-        //}
+            Console.Write($"{intSum} * {randomNum} = {product}");
+            return product;
+        }
 
         //static decimal GetQuotient(intProduct)
         //{
