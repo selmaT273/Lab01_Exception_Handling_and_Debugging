@@ -21,6 +21,7 @@ namespace Lab01_Exception_Handling_and_Debugging
             Console.WriteLine($"The numbers in the array are {string.Join(", ", Populate(newArray))}");
             Console.WriteLine($"The sum of the array is {GetSum(newArray)}");
             GetProduct(newArray, GetSum(newArray));
+            GetQuotient(GetProduct(newArray, GetSum(newArray)));
 
         }
 
@@ -57,14 +58,19 @@ namespace Lab01_Exception_Handling_and_Debugging
             int randomNum = Convert.ToInt32(Console.ReadLine());
             int product = intSum * randomNum;
 
-            Console.Write($"{intSum} * {randomNum} = {product}");
+            Console.WriteLine($"{intSum} * {randomNum} = {product}");
             return product;
         }
 
-        //static decimal GetQuotient(intProduct)
-        //{
+        static decimal GetQuotient(int intProduct)
+        {
+            Console.WriteLine($"Please enter a number to divide your product {intProduct} by.");
+            int divideBy = Convert.ToInt32(Console.ReadLine());
+            int quotient = intProduct / divideBy;
 
-        //}
+            Console.WriteLine($"{intProduct} / {divideBy} = {quotient}");
+            return quotient;
+        }
 
     }
 }
