@@ -19,6 +19,7 @@ namespace Lab01_Exception_Handling_and_Debugging
 
            
             Console.WriteLine($"The numbers in the array are {string.Join(", ", Populate(newArray))}");
+            Console.WriteLine($"The sum of the array is {GetSum(newArray)}");
 
         }
 
@@ -37,10 +38,17 @@ namespace Lab01_Exception_Handling_and_Debugging
             
         }
 
-        //static int GetSum(intArray)
-        //{
+        static int GetSum(int[] intArray)
+        {
+            int sum = 0;
 
-        //}
+            for (int i = 0; i < intArray.Length; i++)
+            {
+                sum += intArray[i];
+            }
+
+            return sum;
+        }
 
         //static int GetProduct(intArray, intSum)
         //{
