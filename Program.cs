@@ -21,9 +21,10 @@ namespace Lab01_Exception_Handling_and_Debugging
 
            
             Console.WriteLine($"The numbers in the array are {string.Join(", ", Populate(newArray))}");
-            Console.WriteLine($"The sum of the array is {GetSum(newArray)}");
-            GetProduct(newArray, GetSum(newArray));
-            GetQuotient(GetProduct(newArray, GetSum(newArray)));
+            int sum = GetSum(newArray);
+            Console.WriteLine($"The sum of the array is {sum}");
+            int product = GetProduct(newArray, sum);
+            GetQuotient(product);
 
         }
 
