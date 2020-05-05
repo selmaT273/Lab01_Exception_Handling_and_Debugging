@@ -7,24 +7,46 @@ namespace Lab01_Exception_Handling_and_Debugging
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to my game! Let's do some math!");
-            StartSequence();
 
-            Console.Write("Program is complete");
+            try
+            {
+                StartSequence();
+            }
+            catch(Exception ex)
+            {
+                Console.Write("Whoops, something went wrong.", ex.Message);
+            }
+            finally
+            {
+                Console.Write("Program is complete");
+            }
         }
 
         static void StartSequence()
         {
-            Console.WriteLine("Enter a number greater than zero.");
-            int userInput = Convert.ToInt32(Console.ReadLine());
+            try
+            {
 
-            int[] newArray = new int[userInput];
+                Console.WriteLine("Enter a number greater than zero.");
+                int userInput = Convert.ToInt32(Console.ReadLine());
 
-           
-            Console.WriteLine($"The numbers in the array are {string.Join(", ", Populate(newArray))}");
-            int sum = GetSum(newArray);
-            Console.WriteLine($"The sum of the array is {sum}");
-            int product = GetProduct(newArray, sum);
-            GetQuotient(product);
+                int[] newArray = new int[userInput];
+
+
+                Console.WriteLine($"The numbers in the array are {string.Join(", ", Populate(newArray))}");
+                int sum = GetSum(newArray);
+                Console.WriteLine($"The sum of the array is {sum}");
+                int product = GetProduct(newArray, sum);
+                GetQuotient(product);
+            }
+            catch (FormatException fex)
+            {
+                Console.WriteLine("Oops, there was an error with the format.");
+            }
+            catch(OverflowException oex)
+            {
+                Console.WriteLine("Uh oh. Overflow detected");
+            }
 
         }
 
@@ -57,22 +79,38 @@ namespace Lab01_Exception_Handling_and_Debugging
 
         static int GetProduct(int[] intArray, int intSum)
         {
-            Console.WriteLine($"Please select a random number between 1 and {intArray.Length}");
-            int randomNum = Convert.ToInt32(Console.ReadLine());
-            int product = intSum * randomNum;
+            try
+            {
+                Console.WriteLine($"Please select a random number between 1 and {intArray.Length}");
+                int randomNum = Convert.ToInt32(Console.ReadLine());
+                int product = intSum * randomNum;
 
-            Console.WriteLine($"{intSum} * {randomNum} = {product}");
-            return product;
+                Console.WriteLine($"{intSum} * {randomNum} = {product}");
+                return product;
+            }
+            catch (IndexOutOfRangeException iex)
+            {
+                Console.WriteLine("Out of range");
+                throw iex;
+            }
         }
 
         static decimal GetQuotient(decimal intProduct)
         {
-            Console.WriteLine($"Please enter a number to divide your product {intProduct} by.");
-            decimal divideBy = Convert.ToInt32(Console.ReadLine());
-            decimal quotient = decimal.Divide(intProduct, divideBy);
+            try
+            {
+                Console.WriteLine($"Please enter a number to divide your product {intProduct} by.");
+                decimal divideBy = Convert.ToInt32(Console.ReadLine());
+                decimal quotient = decimal.Divide(intProduct, divideBy);
 
-            Console.WriteLine($"{intProduct} / {divideBy} = {quotient}");
-            return quotient;
+                Console.WriteLine($"{intProduct} / {divideBy} = {quotient}");
+                return quotient;
+            }
+            catch (DivideByZeroException dex)
+            {
+                Console.WriteLine(dex.Message);
+                return 0;
+            }
         }
 
     }
